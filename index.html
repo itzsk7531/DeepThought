@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DecodeThought</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body{
+  font-family:'Inter',sans-serif;
+  background:#f1f5f9;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.card{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+  text-align:center;
+  width:350px;
+}
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:14px;
+}
+.admin{background:#2563eb;color:white;}
+.user{background:#16a34a;color:white;}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>DecodeThought</h2>
+  <p>Dynamic Survey Platform</p>
+  <button class="admin" onclick="location.href='admin.html'">Admin Panel</button>
+  <button class="user" onclick="location.href='survey.html'">User Survey</button>
+</div>
+
+</body>
+</html>
