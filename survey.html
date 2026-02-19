@@ -1,83 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Survey</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-<style>
-body{
-  font-family:'Inter',sans-serif;
-  background:#f1f5f9;
-  padding:40px;
-}
-.container{
-  max-width:600px;
-  margin:auto;
-  background:white;
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.06);
-}
-input,textarea{
-  width:100%;
-  padding:10px;
-  margin-top:8px;
-  border-radius:8px;
-  border:1px solid #e2e8f0;
-}
-button{
-  margin-top:20px;
-  width:100%;
-  padding:12px;
-  background:#2563eb;
-  color:white;
-  border:none;
-  border-radius:8px;
-}
-.error{
-  color:red;
-  font-size:13px;
-}
-</style>
+  <title>Survey Form</title>
 </head>
 <body>
 
-<div class="container">
-<h2 id="surveyTitle"></h2>
+  <h2 id="eventTitle">Loading Event...</h2>
 
-<label>Rate (1 to 5)</label>
-<input type="number" id="rating" min="1" max="5">
-<div id="error" class="error"></div>
+  <form>
+    <input type="text" placeholder="Your Name" required><br><br>
+    
+    <label>Rating (1-5)</label>
+    <input type="number" min="1" max="5" required><br><br>
+    
+    <button type="submit">Submit</button>
+  </form>
 
-<label>Feedback</label>
-<textarea id="feedback"></textarea>
+  <script>
+    // Get title from URL
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get("title");
 
-<button onclick="submitSurvey()">Submit</button>
-</div>
-
-<script>
-document.getElementById("surveyTitle").innerText=
-localStorage.getItem("surveyTitle")||"Event Survey";
-
-function submitSurvey(){
-  let rating=document.getElementById("rating").value;
-  let feedback=document.getElementById("feedback").value;
-  let error=document.getElementById("error");
-
-  if(rating<1||rating>5){
-    error.innerText="Rating must be between 1 and 5";
-    return;
-  }
-
-  let data=JSON.parse(localStorage.getItem("responses"))||[];
-  data.push({rating:Number(rating),feedback});
-  localStorage.setItem("responses",JSON.stringify(data));
-
-  alert("Response Submitted!");
-  window.location="index.html";
-}
-</script>
+    if(title){
+      document.getElementById("eventTitle").innerText = title;
+    } else {
+      document.getElementById("eventTitle").innerText = "General Survey";
+    }
+  </script>
 
 </body>
 </html>
